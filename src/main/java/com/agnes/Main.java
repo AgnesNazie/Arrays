@@ -1,6 +1,8 @@
 package com.agnes;
 
 import java.util.Arrays;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class Main {
     public static void main(String[] args) {
@@ -10,14 +12,18 @@ public class Main {
         exercise4();
         exercise5();
         exercise6();
+        exercise7();
+        exercise8();
+        exercise9();
+        multiplicationTable();
     }
 
     // exercise 1
     public static void exercise1() {
         System.out.println("EXERCISE 1");
         int[] numbers = {11, 23, 39};
-        for (int i = 0; i < numbers.length; i++) {
-            System.out.print(numbers[i] + " ");
+        for (int number : numbers) {
+            System.out.print(number + " ");
         }
         System.out.println("\n");
     }
@@ -39,6 +45,7 @@ public class Main {
         }
         return -1;
     }
+    // sort
 
     public static void exercise3() {
         System.out.println("EXERCISE 3");
@@ -56,9 +63,7 @@ public class Main {
         System.out.println("EXERCISE 4: ");
         int[] firstNumbers = {1, 15, 20};
         int[] secondNumbers = new int[firstNumbers.length];
-        for (int i = 0; i < firstNumbers.length; i++) {
-            secondNumbers[i] = firstNumbers[i];
-        }
+        System.arraycopy(firstNumbers, 0, secondNumbers, 0, firstNumbers.length);
         System.out.println("Elements from first Numbers: ");
         for (int num : firstNumbers) {
             System.out.print(num + " ");
@@ -73,19 +78,87 @@ public class Main {
     public static void exercise5() {
         System.out.println("\nEXERCISE 5: ");
         String[][] countryCities = {{"France", "Paris"}, {"Sweden", "Stockholm"}};
-        for (int i = 0; i < countryCities.length; ++i) {
-            System.out.println(countryCities[i][0] + " " + countryCities[i][1]);
+        for (String[] countryCity : countryCities) {
+            System.out.println(countryCity[0] + " " + countryCity[1]);
         }
     }
+
     //exercise 6.find average of 6 numbers
-    public static void exercise6(){
+    public static void exercise6() {
         System.out.println("\nEXERCISE 6: ");
-        int [] numbers = {43, 5, 23, 17,2, 14};
+        int[] numbers = {43, 5, 23, 17, 2, 14};
         int sum = 0;
         for (int num : numbers) {
-            sum +=num;
+            sum += num;
         }
         double average = (double) sum / numbers.length;
         System.out.println("Average is: " + average);
     }
+
+    // exercise 7. find odd numbers from array of numbers
+    public static void exercise7() {
+        System.out.println("\n EXERCISE 7: ");
+        int[] numbers = {1, 2, 4, 7, 9, 12};
+        System.out.print("ARRAY: ");
+        for (int num : numbers) {
+            System.out.print(num + " ");
+        }
+        System.out.print("\n ODD NUMBERS: ");
+        for (int num : numbers) {
+            if (num % 2 != 0) {
+                System.out.print(num + " ");
+            }
+        }
+    }
+
+    public static void exercise8() {
+        System.out.println("\nEXERCISE 8: ");
+        int[] numbers = {20, 20, 40, 20, 30, 40, 50, 60, 50};
+        System.out.print("ARRAY: ");
+        for (int i = 0; i < numbers.length; i++) {
+            System.out.print(numbers[i] + " ");
+        }
+        Set<Integer> unique = new LinkedHashSet<>();
+        for (int i : numbers) {
+            unique.add(i);
+        }
+        System.out.print("\nARRAY WITHOUT DUPLICATE NUMBERS: ");
+        for (int i : unique) {
+            System.out.print(i + " ");
+        }
+    }
+
+    // exercise 9.expand an array
+    public static void exercise9() {
+        int[] original = {1, 2, 3};
+        System.out.println("\nEXERCISE 9 : ");
+        System.out.println("Original Array:" + Arrays.toString(original));
+
+        // add new element
+        int[] newElement = new int[original.length + 1];
+        for (int i = 0; i < original.length; i++) {
+            newElement[i] = original[i];
+        }
+        newElement[newElement.length - 1] = 4;
+
+        System.out.println("Expanded Array:");
+        System.out.println(Arrays.toString(newElement));
+
+    }
+    // exercise 10. multiplication table stored in multi arrays
+    public static void multiplicationTable () {
+        System.out.println("Multiplication Table");
+        int [][] table = new int [10][10];
+        for (int i = 0; i < table.length; i++) {
+            for (int j = 0; j < table.length; j++){
+                table[i][j] = (i + 1) * (j +1);
+                System.out.print(table[i][j] + "\t");
+            }
+            System.out.println();
+        }
+        System.out.println();
+    }
+    // exercise 11
+
 }
+
