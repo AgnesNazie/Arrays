@@ -1,8 +1,6 @@
 package com.agnes;
 
-import java.util.Arrays;
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -16,6 +14,9 @@ public class Main {
         exercise8();
         exercise9();
         multiplicationTable();
+        exercise11();
+        exercise12();
+        exercise13();
     }
 
     // exercise 1
@@ -145,20 +146,95 @@ public class Main {
         System.out.println(Arrays.toString(newElement));
 
     }
+
     // exercise 10. multiplication table stored in multi arrays
-    public static void multiplicationTable () {
+    public static void multiplicationTable() {
         System.out.println("Multiplication Table");
-        int [][] table = new int [10][10];
+        int[][] table = new int[10][10];
         for (int i = 0; i < table.length; i++) {
-            for (int j = 0; j < table.length; j++){
-                table[i][j] = (i + 1) * (j +1);
+            for (int j = 0; j < table.length; j++) {
+                table[i][j] = (i + 1) * (j + 1);
                 System.out.print(table[i][j] + "\t");
             }
             System.out.println();
         }
         System.out.println();
     }
-    // exercise 11
 
+    // exercise 11 user input and store data in reverse order
+    public static void exercise11() {
+        // import scanner
+        Scanner scanner = new Scanner(System.in);
+        List<Integer> userInputList = new ArrayList<>();
+        // declare and initialise target value to stop loop
+        int target = 5;
+        System.out.println("Enter integers.Type " + target);
+
+        while (true) {
+            System.out.println("Enter number: ");
+            int input = scanner.nextInt();
+            userInputList.add(input);
+            if (input == target) break;
+        }
+        //convert to array
+        int[] inputArray = new int[userInputList.size()];
+        for (int i = 0; i < userInputList.size(); i++) {
+            inputArray[i] = userInputList.get(i);
+        }
+        System.out.println("OriginalArray:" + Arrays.toString(inputArray));
+        // reverse array
+        for (int i = 0; i < inputArray.length / 2; i++) {
+            int temp = inputArray[i];
+            inputArray[i] = inputArray[inputArray.length - 1 - i];
+            inputArray[inputArray.length - 1 - i] = temp;
+        }
+        System.out.println("Reversed Array: " + Arrays.toString(inputArray) + "\n");
+    }
+
+    public static void exercise12() {
+        int[][] numbers = {{1, 2, 3}, {4, 5, 6,}, {7, 8, 9}};
+
+        int [] rowPositions = {0,1,2};
+        int [] colPositions = {0,0,2};
+
+        System.out.println("Diagonal elements:");
+        for (int i = 0; i < rowPositions.length; i++) {
+           int row = rowPositions[i];
+           int col = colPositions[i];
+            System.out.print(numbers[row][col] + " ");
+
+        }
+        System.out.println("\n");
+    }
+    public static void exercise13() {
+        //set arbitrary size
+        int size = 10;
+        // create 2 arrays
+        int[] randomNumbers = new int[size];
+        int[] sortedNumbers = new int[size];
+        //import java utils
+        Random random = new Random();
+        // fill with numbers and set boundaries (1-100)
+        for (int i = 0; i < size; i++) {
+        randomNumbers[i] = random.nextInt(100) + 1;
+      }
+    System.out.println("Original Array: " + Arrays.toString(randomNumbers));
+     // split to left and right
+        int left =0;
+     int right= size - 1;
+     for (int num:randomNumbers) {
+         if (num % 2 != 0) {
+             sortedNumbers[left++] = num;
+         } else {
+             sortedNumbers[right--] = num;
+         }
+
+     }
+        System.out.println("Odd Front/ Even Rear: " + Arrays.toString(sortedNumbers));
+
+    }
 }
+
+
+
 
