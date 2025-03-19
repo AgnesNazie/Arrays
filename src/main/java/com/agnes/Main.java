@@ -194,18 +194,19 @@ public class Main {
     public static void exercise12() {
         int[][] numbers = {{1, 2, 3}, {4, 5, 6,}, {7, 8, 9}};
 
-        int [] rowPositions = {0,1,2};
-        int [] colPositions = {0,0,2};
+        int[] rowPositions = {0, 1, 2};
+        int[] colPositions = {0, 0, 2};
 
         System.out.println("Diagonal elements:");
         for (int i = 0; i < rowPositions.length; i++) {
-           int row = rowPositions[i];
-           int col = colPositions[i];
+            int row = rowPositions[i];
+            int col = colPositions[i];
             System.out.print(numbers[row][col] + " ");
 
         }
         System.out.println("\n");
     }
+
     public static void exercise13() {
         //set arbitrary size
         int size = 10;
@@ -216,20 +217,20 @@ public class Main {
         Random random = new Random();
         // fill with numbers and set boundaries (1-100)
         for (int i = 0; i < size; i++) {
-        randomNumbers[i] = random.nextInt(100) + 1;
-      }
-    System.out.println("Original Array: " + Arrays.toString(randomNumbers));
-     // split to left and right
-        int left =0;
-     int right= size - 1;
-     for (int num:randomNumbers) {
-         if (num % 2 != 0) {
-             sortedNumbers[left++] = num;
-         } else {
-             sortedNumbers[right--] = num;
-         }
+            randomNumbers[i] = random.nextInt(100) + 1;
+        }
+        System.out.println("Original Array: " + Arrays.toString(randomNumbers));
+        // split to left and right
+        int left = 0;
+        int right = size - 1;
+        for (int num : randomNumbers) {
+            if (num % 2 != 0) {
+                sortedNumbers[left++] = num;
+            } else {
+                sortedNumbers[right--] = num;
+            }
 
-     }
+        }
         System.out.println("Odd Front/ Even Rear: " + Arrays.toString(sortedNumbers));
 
     }
